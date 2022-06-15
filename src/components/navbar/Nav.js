@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 
 import { Navbar, Header, Nav as NavContainer, LogoLink } from "./Navbar.style";
 import { NavLink } from "./NavLink";
-import { burgerIcon, logo } from "../../assets/imgs/Image";
-import Logo from "./Logo";
+import { burgerIcon} from "../../assets/imgs/Image";
 import BurgerMenu from "./icons/BurgerMenu";
 
 export default function Nav() {

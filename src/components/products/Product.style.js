@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ProductContainer = styled.div`
     text-align: center;
     width: 100%;
+    padding-bottom: 4%;
 
     @media screen and (min-width: 1440px) {
         justify-content: center;

@@ -3,9 +3,7 @@ import styled from "styled-components"
 import { arrowLeftIcon } from '../../assets/imgs/Image';
 
 const BackButtonContainer = styled.div `
-    margin-left: 10rem;
-    margin-bottom: 4rem;
-    margin-top: 1.2%;
+    margin: 3% 0;
 
     img {
         cursor: pointer;

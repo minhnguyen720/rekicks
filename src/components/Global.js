@@ -13,7 +13,6 @@ export const AppContainer = styled.div`
     max-width: 100vw;
     width: 100%;
     overflow-x: hidden;
-    padding-bottom: 2%;
 
     @media screen and (max-width: 560px) {
         padding-left: 0;

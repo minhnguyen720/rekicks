@@ -52,7 +52,7 @@ export const Nav = styled.ul`
 export const StyledNavLink = styled.li`
     width: 8rem;
     cursor: pointer;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     position: relative;
     margin-right:0.8rem;
     overflow:hidden;

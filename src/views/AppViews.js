@@ -2,7 +2,7 @@ import React from 'react'
 import ProductPackage from "../components/products/ProductPackage";
 import { DummyData } from "../assets/Dummy";
 import BackButton from "../components/backButton/BackButton";
-import StyledCarousel from '../components/carousel/Carousel';
+import StyledCarousel from '../components/hero/HeroSection';
 import Brands from '../components/brands/Brands';
 import DiscoverField from '../components/discoverField/DiscoverField';
 

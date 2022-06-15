@@ -1,18 +1,26 @@
 import styled from "styled-components"
+import Carousel from "react-bootstrap/Carousel";
+
+export const StyledCarouselInner = styled(Carousel) `
+    max-width: 100vmin;
+    width: 100%;
+
+    text-align: center;
+`
 
 export const DiscoverFieldContainer = styled.div`
     background-color: #000000;
     display: flex;
 
-    div {
-        padding: 3%;
+    .sideField {
+        padding: 3% 5% 5%;
     }
 
     h1 {
         color: #ffffff;
         font-size: 5vmin;
         text-transform: uppercase;
-        margin-bottom: 2rem;
+        margin-bottom: 2%;
     }
 
     p {
@@ -20,23 +28,19 @@ export const DiscoverFieldContainer = styled.div`
         max-width: 100%;
         width: 80%;
         color: #ffffff;
-        margin-bottom: 3rem;
-    }
-
-    img {
-        max-width: 50vmin;
-        width: 100%;
-        height: auto;
-
-        @media screen and (min-width: 1440px) {
-            max-width: 100vmin;
-        }
+        margin-bottom: 3%;
     }
 
     button {
+        position: relative;
+        font-size: 2.5vmin;
+        padding: 2%;
+        max-width: 12rem;
+        width: 100%;
         background-color: #000000;
         border: 3px solid #ffffff;
         color: #ffffff;
+        z-index: 1;
     }
 
     button::before {
@@ -55,10 +59,18 @@ export const DiscoverFieldContainer = styled.div`
         
     button:hover {
         color: #000000;
+        border: 3px solid transparent;
     }
     
-    :hover::before {
+    button:hover::before {
         transform-origin: left;
         transform: scaleX(1);
+    }
+
+    @media screen and (max-width: 1024px) {
+        & {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 `
