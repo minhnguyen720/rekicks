@@ -19,6 +19,8 @@ function App() {
           <Route
             path="*"
             element={<NotFoundView />}
+
+            
           />
         </Routes>
       </AppContainer>
