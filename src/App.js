@@ -5,7 +5,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import { Home, NotFoundView, Products } from "./views/AppViews";
+import { Home, Management, NotFoundView, Products } from "./views/AppViews";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/manage" element={<Management />} />
           <Route
             path="*"
             element={<NotFoundView />}
