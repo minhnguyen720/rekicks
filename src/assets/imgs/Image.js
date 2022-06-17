@@ -7,6 +7,14 @@ import discover1 from "./products/discover/discover_1.jpg";
 import discover2 from "./products/discover/discover_2.jpg";
 import discover3 from "./products/discover/discover_3.jpg";
 import AirForceOne from "./products/AirForceOne.png"
+import addIcon from "./icons/add-icon.svg";
+import manageIcon from "./icons/manage-icon.svg";
+import exitIcon from "./icons/exit-icon.svg";
+import notiIcon from "./icons/noti-icon.svg";
+import searchIcon from "./icons/search-icon.svg";
+import closeIcon from "./icons/close-icon.svg";
+import uploadIcon from "./icons/upload-icon.svg";
+import sidebarIcon from "./icons/sidebar-icon.svg";
 
 export {
     burgerIcon,
@@ -17,5 +25,13 @@ export {
     discover1,
     discover2,
     discover3,
-    AirForceOne
+    AirForceOne,
+    addIcon,
+    manageIcon,
+    notiIcon,
+    exitIcon,
+    searchIcon,
+    closeIcon,
+    uploadIcon,
+    sidebarIcon
 }

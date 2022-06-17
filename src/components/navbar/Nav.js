@@ -28,7 +28,7 @@ export default function Nav() {
                         <NavLink to="/" label="Home" />
                         <NavLink to="/products" label="Products" />
                         <NavLink to="/contact" label="Contact" />
-                        <NavLink to="/cart" label="Cart" />
+                        <NavLink to="/manage" label="Manage" />
                     </NavContainer>
                 </Navbar>
             </Header>

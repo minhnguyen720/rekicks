@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProductPackage from "../components/products/ProductPackage";
 import { DummyData } from "../assets/Dummy";
 import BackButton from "../components/backButton/BackButton";
 import StyledCarousel from '../components/hero/HeroSection';
 import Brands from '../components/brands/Brands';
 import DiscoverField from '../components/discoverField/DiscoverField';
-import { product1 } from '../assets/imgs/Image';
-import { Header, ManagementContainer, ProductContainer, InnerContainer, Sidemenu } from '../components/management/Management.style';
+import { Header, ManagementContainer, ProductContainer, InnerContainer } from '../components/management/Management.style';
 import ProductDetail from '../components/management/ProductDetail';
+import Sidemenu from '../components/management/Sidemenu';
+import CreateModal from '../components/modal/CreateModal';
+import { ReactComponent as SearchIcon } from '../assets/imgs/icons/search-icon.svg'
+import { sidebarIcon } from '../assets/imgs/Image';
 
 export function NotFoundView() {
     return (
@@ -41,84 +44,52 @@ export function Home() {
 }
 
 export function Management() {
+    const [isOpen, setOpenModal] = useState(false);
+    const [isMobile, setMobile] = useState(false);
+    const openModal = () => {
+        setOpenModal(true);
+    }
+
+    const closeModal = () => {
+        setOpenModal(false);
+    }
+
+    const openMenu = () => {
+        setMobile(!isMobile);
+    }
+
     return (
-        <ManagementContainer>
-            <Header>Management</Header>
-            <InnerContainer>
-                <Sidemenu>
-                    <ul>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                        <li>hello</li>
-                    </ul>
-                </Sidemenu>
-                <ProductContainer>
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
+        <>
+            <ManagementContainer>
+                <Header>
+                    <button onClick={openMenu} className="sideMenuBtn">
+                        <img src={sidebarIcon} alt="trigger menu"></img>
+                    </button>
+                <p>Management</p>
+                </Header>
+                <InnerContainer>
+                    <Sidemenu
+                        isMobile={isMobile}
+                        openModal={openModal}
+                        fill={isMobile ? "white" : "black"}
                     />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                    <ProductDetail
-                        src={product1}
-                        productId={"12121212"}
-                        productName={"Air Jordan 1"}
-                        productCapacity={999}
-                        availSize={"41,42,43,44,45"}
-                    />
-                </ProductContainer>
-            </InnerContainer>
-        </ManagementContainer>
+                    <ProductContainer>
+                        {DummyData.map((product) => {
+                            return (
+                                <ProductDetail
+                                    key={product.id}
+                                    src={product.src}
+                                    productName={product.name}
+                                    productId={product.id}
+                                    productCapacity={product.capacity}
+                                    availSize={product.size}
+                                />
+                            )
+                        })}
+                    </ProductContainer>
+                </InnerContainer>
+            </ManagementContainer>
+            <CreateModal onClick={closeModal} isOpen={isOpen} />
+        </>
     );
 }
