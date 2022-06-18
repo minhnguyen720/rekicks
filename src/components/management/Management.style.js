@@ -130,10 +130,11 @@ export const SidemenuContainer = styled.div`
 
     @media screen and (max-width:1024px) {
         & {
-            position: fixed;
+            /* position: fixed; */
+            /* top: 40vh; */
+            z-index: 100;
             color: #ffffff;
             transform: translateX(${(props) => props.isMobile ? "0%" : "-120%"});
-            top: 40vh;
             padding: 2%;
         }
     }

@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-export const StyledCreateModal = styled.form`
+export const StyledCreateModal = styled.div`
     position: absolute;
     top: 0;
     left: 0;
     margin-left: 50%;
-    margin-top: 15%;
+    margin-top: 6%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -19,6 +19,15 @@ export const StyledCreateModal = styled.form`
     #uploadFile {
         border: none;
         padding: 2% 0;
+    }
+
+    textarea {
+        resize: none;
+        width: 100%;
+        height: 15rem;
+        padding: 2%;
+        border: 1px solid #000000;
+        font-weight: 300;
     }
 
     .submitButtonContainer {

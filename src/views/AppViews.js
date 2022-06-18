@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductPackage from "../components/products/ProductPackage";
 import { DummyData } from "../assets/Dummy";
 import BackButton from "../components/backButton/BackButton";
@@ -46,6 +46,8 @@ export function Home() {
 export function Management() {
     const [isOpen, setOpenModal] = useState(false);
     const [isMobile, setMobile] = useState(false);
+    const [toggle, setToggle] = useState(false);
+
     const openModal = () => {
         setOpenModal(true);
     }
@@ -58,6 +60,27 @@ export function Management() {
         setMobile(!isMobile);
     }
 
+    const handleDelete = (e) => {
+        const targetId = e.target.id;
+
+        fetch(`http://localhost:8080/api/item/${targetId}`, {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' }
+        })
+        document.location.reload();
+    }
+    
+    const [data, setData] = useState([]);
+    const getDataFromDB = async () => {
+        const response = await fetch('http://localhost:8080/api/item');
+        const dataFromDB = await response.json();
+        setData(dataFromDB);
+    }
+
+    useEffect(() => {
+        getDataFromDB();
+    }, [toggle]);
+
     return (
         <>
             <ManagementContainer>
@@ -65,7 +88,7 @@ export function Management() {
                     <button onClick={openMenu} className="sideMenuBtn">
                         <img src={sidebarIcon} alt="trigger menu"></img>
                     </button>
-                <p>Management</p>
+                    <p>Management</p>
                 </Header>
                 <InnerContainer>
                     <Sidemenu
@@ -74,22 +97,24 @@ export function Management() {
                         fill={isMobile ? "white" : "black"}
                     />
                     <ProductContainer>
-                        {DummyData.map((product) => {
+                        {data.map((item) => {
                             return (
                                 <ProductDetail
-                                    key={product.id}
-                                    src={product.src}
-                                    productName={product.name}
-                                    productId={product.id}
-                                    productCapacity={product.capacity}
-                                    availSize={product.size}
+                                    handleDelete = {handleDelete}
+                                    key={item.id}
+                                    productBrandId={item.brandId}
+                                    productId={item.id}
+                                    productCapacity={item.capacity}
+                                    productName={item.name}
+                                    productPrice={item.price}
+                                    productDesc={item.description}
                                 />
                             )
                         })}
                     </ProductContainer>
                 </InnerContainer>
             </ManagementContainer>
-            <CreateModal onClick={closeModal} isOpen={isOpen} />
+            <CreateModal closeModal={closeModal} isOpen={isOpen} btnLabel="Create" method="POST"/>
         </>
     );
 }
